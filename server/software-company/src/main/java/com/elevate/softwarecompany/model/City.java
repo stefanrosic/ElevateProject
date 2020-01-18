@@ -4,5 +4,6 @@ public enum City {
 
     NOVI_SAD,
     BELGRADE,
-    NIS
+    NIS,
+    SUBOTICA
 }
