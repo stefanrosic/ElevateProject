@@ -5,5 +5,7 @@ public enum City {
     NOVI_SAD,
     BELGRADE,
     NIS,
-    SUBOTICA
+    SUBOTICA,
+    ZRENJANIN,
+    KRAGUJEVAC
 }
