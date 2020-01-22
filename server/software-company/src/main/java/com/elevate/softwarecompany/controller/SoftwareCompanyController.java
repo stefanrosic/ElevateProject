@@ -2,7 +2,6 @@ package com.elevate.softwarecompany.controller;
 
 import com.elevate.softwarecompany.dto.SoftwareCompanyDTO;
 import com.elevate.softwarecompany.model.SoftwareCompany;
-import com.elevate.softwarecompany.service.LocationService;
 import com.elevate.softwarecompany.service.SoftwareCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +18,6 @@ public class SoftwareCompanyController {
 
     @Autowired
     SoftwareCompanyService softwareCompanyService;
-
-    @Autowired
-    LocationService locationService;
 
     @RequestMapping(value = "/software-company", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<SoftwareCompanyDTO>> getSoftwareCompanies() {

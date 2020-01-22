@@ -21,30 +21,26 @@ public class SoftwareCompany extends AbstractEntity{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProgrammingLanguage> technologies;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CompanyComment> comments;
+
     public SoftwareCompany(){}
 
-    public SoftwareCompany(Location companyLocation,
-                           String companyName,
-                           CompanyType companyType,
-                           List<ProgrammingLanguage> technologies)
-    {
+    public SoftwareCompany(Location companyLocation, String companyName, CompanyType companyType, List<ProgrammingLanguage> technologies, List<CompanyComment> comments) {
         this.companyLocation = companyLocation;
         this.companyName = companyName;
         this.companyType = companyType;
         this.technologies = technologies;
+        this.comments = comments;
     }
 
-    public SoftwareCompany(Integer id,
-                           Location companyLocation,
-                           String companyName,
-                           CompanyType companyType,
-                           List<ProgrammingLanguage> technologies) throws IllegalArgumentException
-    {
+    public SoftwareCompany(Integer id, Location companyLocation, String companyName, CompanyType companyType, List<ProgrammingLanguage> technologies, List<CompanyComment> comments) throws IllegalArgumentException {
         super(id);
         this.companyLocation = companyLocation;
         this.companyName = companyName;
         this.companyType = companyType;
         this.technologies = technologies;
+        this.comments = comments;
     }
 
     /**
@@ -86,5 +82,9 @@ public class SoftwareCompany extends AbstractEntity{
 
     public List<ProgrammingLanguage> getTechnologies() {
         return technologies;
+    }
+
+    public List<CompanyComment> getComments() {
+        return comments;
     }
 }
