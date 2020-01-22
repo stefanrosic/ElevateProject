@@ -1,50 +1,75 @@
 package com.elevate.softwarecompany.model;
 
-public class Location {
+import javax.persistence.*;
 
-    private long id;
-    private double latitude;
-    private double longitude;
+@Entity
+@Table(name = "locations")
+public class Location extends AbstractEntity{
+
+    @Column(nullable = false)
+    private Double latitude;
+
+    @Column(nullable = false)
+    private Double longitude;
+
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "_id")
     private Address address;
 
     public Location(){}
 
-    public Location(long id, Address address, double latitude, double longitude) {
-        this.id = id;
-        this.address = address;
+    public Location(Double latitude,
+                    Double longitude,
+                    Address address) throws IllegalArgumentException
+    {
+        super();
+        parameterValidation(latitude,longitude,address);
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Location(Integer id,
+                    Double latitude,
+                    Double longitude,
+                    Address address) throws IllegalArgumentException
+    {
+        super(id);
+        parameterValidation(latitude,longitude,address);
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+    }
+
+    /**
+     * Method which validate constructor parameters
+     *
+     * @param latitude of location to validate
+     * @param longitude of location to validate
+     * @param address of location to validate
+     * @throws IllegalArgumentException if one of these is incorrect
+     */
+    public void parameterValidation(Double latitude, Double longitude, Address address) throws IllegalArgumentException {
+
+        if(latitude == null)
+            throw new IllegalArgumentException("Parameter latitude cannot be null!");
+
+        if(longitude == null)
+            throw new IllegalArgumentException("Parameter longitude cannot be null!");
+
+        if(address == null)
+            throw new IllegalArgumentException("Parameter address cannot be null!");
     }
 
     public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
     public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public Address getAddress() {
+        return address;
     }
 }

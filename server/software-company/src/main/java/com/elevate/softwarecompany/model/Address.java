@@ -2,14 +2,32 @@ package com.elevate.softwarecompany.model;
 
 import com.elevate.softwarecompany.util.RegularExpressions;
 
-public class Address extends Entity{
+import javax.persistence.*;
 
+@Entity
+@Table(name = "addresses")
+public class Address extends AbstractEntity{
+
+    @Column(nullable = false)
     private String street;
+
+    @Column(name = "_number", nullable = false)
     private String number;
+
+    @Enumerated
+    @Column(nullable = false)
     private City city;
+
+    @Column(name = "zip_code", nullable = false)
     private String zipCode;
 
-    public Address(String street, String number, City city, String zipCode) throws IllegalArgumentException{
+    public Address(){}
+
+    public Address(String street,
+                   String number,
+                   City city,
+                   String zipCode) throws IllegalArgumentException
+    {
         super();
         parameterValidation(street,number,city,zipCode);
         this.street = street;
@@ -18,7 +36,12 @@ public class Address extends Entity{
         this.zipCode = zipCode;
     }
 
-    public Address(Integer id, String street, String number, City city, String zipCode) throws IllegalArgumentException{
+    public Address(Integer id,
+                   String street,
+                   String number,
+                   City city,
+                   String zipCode) throws IllegalArgumentException
+    {
         super(id);
         parameterValidation(street,number,city,zipCode);
         this.street = street;

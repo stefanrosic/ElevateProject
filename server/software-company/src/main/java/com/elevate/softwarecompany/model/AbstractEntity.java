@@ -1,12 +1,18 @@
 package com.elevate.softwarecompany.model;
 
-public abstract class Entity{
+import javax.persistence.*;
 
+@MappedSuperclass
+public abstract class AbstractEntity{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "_id", columnDefinition = "BIGINT", unique = true, nullable = false)
     private Integer id;
 
-    protected Entity(){super();}
+    protected AbstractEntity(){super();}
 
-    protected Entity(Integer id) throws IllegalArgumentException {
+    protected AbstractEntity(Integer id) throws IllegalArgumentException {
         super();
         parameterValidation(id);
         this.id = id;
@@ -15,7 +21,7 @@ public abstract class Entity{
     /**
      * Method which validate constructor parameters
      *
-     * @param id Identifier of Entity
+     * @param id Identifier of AbstractEntity
      * @throws IllegalArgumentException if one of parameter is incorrect
      */
     private void parameterValidation(Integer id) throws IllegalArgumentException{

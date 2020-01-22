@@ -1,22 +1,45 @@
 package com.elevate.softwarecompany.model;
 
+import javax.persistence.*;
 import java.util.List;
 
-public class SoftwareCompany extends Entity{
+@Entity
+@Table(name = "software_companies")
+public class SoftwareCompany extends AbstractEntity{
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "_id", nullable = false)
     private Location companyLocation;
+
+    @Column(nullable = false)
     private String companyName;
+
+    @Enumerated
+    @Column(nullable = false)
     private CompanyType companyType;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProgrammingLanguage> technologies;
 
-    public SoftwareCompany(Location companyLocation, String companyName, CompanyType companyType, List<ProgrammingLanguage> technologies) {
+    public SoftwareCompany(){}
+
+    public SoftwareCompany(Location companyLocation,
+                           String companyName,
+                           CompanyType companyType,
+                           List<ProgrammingLanguage> technologies)
+    {
         this.companyLocation = companyLocation;
         this.companyName = companyName;
         this.companyType = companyType;
         this.technologies = technologies;
     }
 
-    public SoftwareCompany(Integer id, Location companyLocation, String companyName, CompanyType companyType, List<ProgrammingLanguage> technologies) throws IllegalArgumentException {
+    public SoftwareCompany(Integer id,
+                           Location companyLocation,
+                           String companyName,
+                           CompanyType companyType,
+                           List<ProgrammingLanguage> technologies) throws IllegalArgumentException
+    {
         super(id);
         this.companyLocation = companyLocation;
         this.companyName = companyName;
