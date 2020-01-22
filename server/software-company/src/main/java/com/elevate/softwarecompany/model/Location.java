@@ -42,7 +42,7 @@ public class Location extends AbstractEntity{
     }
 
     /**
-     * Method which validate constructor parameters
+     * Constructor parameters method validation
      *
      * @param latitude of location to validate
      * @param longitude of location to validate

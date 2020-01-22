@@ -48,7 +48,7 @@ public class SoftwareCompany extends AbstractEntity{
     }
 
     /**
-     * Method which validate constructor parameters
+     * Constructor parameters method validation
      *
      * @param companyLocation Validate companyLocation parameter
      * @param companyName Validate companyName parameter

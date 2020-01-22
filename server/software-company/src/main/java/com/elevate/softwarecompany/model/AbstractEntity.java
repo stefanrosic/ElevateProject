@@ -19,7 +19,7 @@ public abstract class AbstractEntity{
     }
 
     /**
-     * Method which validate constructor parameters
+     * Constructor parameters method validation
      *
      * @param id Identifier of AbstractEntity
      * @throws IllegalArgumentException if one of parameter is incorrect

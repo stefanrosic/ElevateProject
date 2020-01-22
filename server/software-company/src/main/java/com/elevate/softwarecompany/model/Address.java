@@ -51,7 +51,7 @@ public class Address extends AbstractEntity{
     }
     
     /**
-     * Method which validate constructor parameters
+     * Constructor parameters method validation
      *
      * @param street Validate street parameter
      * @param number Validate number parameter

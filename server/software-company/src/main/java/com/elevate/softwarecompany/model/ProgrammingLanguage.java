@@ -36,7 +36,7 @@ public class ProgrammingLanguage extends AbstractEntity{
     }
 
     /**
-     * Method which validate constructor parameters
+     * Constructor parameters method validation
      *
      * @param programmingLanguageName represents Programming language name for which is validation implemented
      * @param frameworks represents frameworks of Programming language for which is validation implemented
